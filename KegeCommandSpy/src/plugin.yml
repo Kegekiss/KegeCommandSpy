@@ -1,0 +1,11 @@
+name: KegeCommandSpy
+main: com.kegekiss.kegecommandspy.KegeCommandSpy
+version: 1.0
+author: Kegekiss
+commands:
+   commandspy:
+      description: Liste les IPs des joueurs et montre les doublons.
+      usage: /commandspy [toggle on/off]
+      permission: kegecommandspy.command
+      permission-message: §6Vous n'avez pas la permission d'utiliser cette commande!
+      default: op

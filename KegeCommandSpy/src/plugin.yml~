@@ -1,0 +1,11 @@
+name: KegeIPList
+main: com.kegekiss.kegeiplist.KegeIPList
+version: 1.0
+author: Kegekiss
+commands:
+   iplist:
+      description: Liste les IPs des joueurs et montre les doublons.
+      usage: /iplist
+      permission: kegeiplist.iplist
+      permission-message: §6Vous n'avez pas la permission d'utiliser cette commande!
+      default: op
