@@ -8,4 +8,8 @@ commands:
       usage: /commandspy [toggle on/off]
       permission: kegecommandspy.command
       permission-message: §6Vous n'avez pas la permission d'utiliser cette commande!
-      default: op
+
+permissions:
+    kegecommandspy.command:
+        description: Permet d'utiliser la commande /commandspy.
+        default: op
