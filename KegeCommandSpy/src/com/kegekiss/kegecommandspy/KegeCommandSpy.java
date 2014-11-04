@@ -22,14 +22,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class KegeCommandSpy extends JavaPlugin implements Listener {
 	
-	Set<UUID> commandSpies = new HashSet<UUID>();
+	Set<UUID> commandSpies;
 
 	@Override
 	public void onEnable() {
+		commandSpies = new HashSet<UUID>();
 		// On enregistre l'event
 		Bukkit.getPluginManager().registerEvents(this, this);
 		// On lit la liste
-		getDataFolder().mkdir();
 		loadData();
 	}
 	
@@ -37,6 +37,8 @@ public class KegeCommandSpy extends JavaPlugin implements Listener {
 	public void onDisable() {
 		// On enregistre la liste
 		saveData();
+		commandSpies.clear();
+		commandSpies = null;
 	}
 	
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -92,6 +94,7 @@ public class KegeCommandSpy extends JavaPlugin implements Listener {
 	}
 
 	private void loadData() {
+		getDataFolder().mkdir();
 		try (Scanner scanner = new Scanner(new File(getDataFolder(), "data.txt"))) {
 			while (scanner.hasNext()) {
 				// Pour chaque ligne...
