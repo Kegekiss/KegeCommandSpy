@@ -47,9 +47,15 @@ public class KegeCommandSpy extends JavaPlugin implements Listener {
 		for (UUID uuid : commandSpies) {
 			OfflinePlayer spy = Bukkit.getOfflinePlayer(uuid);
 			if (spy.isOnline()) {
-				// Si l'espion est en ligne, on envoie le message
-				spy.getPlayer().sendMessage(ChatColor.RED + "[KegeCommandSpy] " + 
-				event.getPlayer().getDisplayName() + ChatColor.RED + " : " + ChatColor.GOLD + event.getMessage());
+				String command  = event.getMessage();
+				// On vérifie que la commande n'est pas sensible (AuthMe)
+				if (!command.contains("/login ") && !command.contains("/l ") && !command.contains("/reg ") && !command.contains("/changepassword ") && !command.contains("/unregister ") && !command.contains("/authme register ") && !command.contains("/authme changepassword ") && !command.contains("/authme reg ") && !command.contains("/authme cp ") && !command.contains("/register ")) {
+					// Non sensible !
+					// Si l'espion est en ligne, on envoie le message
+					spy.getPlayer().sendMessage(ChatColor.RED + "[KegeCommandSpy] " + 
+					event.getPlayer().getDisplayName() + ChatColor.RED + " : " + ChatColor.GOLD + command);
+				}
+				
 			}
 		}
 	}
